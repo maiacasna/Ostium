@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#f8f9fa"/>
+  <g transform="translate(600,450)">
+    <circle cx="0" cy="0" r="180" fill="none" stroke="#495057" stroke-width="30"/>
+    <path d="M -100,-60 L 100,-60 L 60,60 L -60,60 Z" fill="#495057"/>
+    <text x="0" y="220" font-family="Arial, sans-serif" font-size="80" fill="#868e96" text-anchor="middle">
+      Placeholder Image
+    </text>
+    <text x="0" y="300" font-family="Arial, sans-serif" font-size="48" fill="#adb5bd" text-anchor="middle">
+      1200 × 900 px · SVG
+    </text>
+  </g>
+</svg>
