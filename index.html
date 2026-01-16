@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <title>Mirador – Manifest-Driven Viewer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
   <!-- Optional local CSS (delete if you prefer CDN) -->
-  <link rel="stylesheet" href="assets/mirador.min.css">
+  <!-- <link rel="stylesheet" href="assets/mirador.min.css"> -->
 
   <style>
     body, html { margin: 0; height: 100%; overflow: hidden; background: #000; }
@@ -18,8 +18,9 @@
   <script src="assets/mirador.min.js"></script>
 
   <script>
+    const manifestUrl = './manifest.json';
     // Always use fetch; serve the folder with a tiny HTTP server (e.g. python -m http.server 8000)
-    fetch('./manifest.json')
+    fetch(manifestUrl)
       .then(r => {
         if (!r.ok) throw new Error('Manifest not found');
         return r.json();
@@ -40,7 +41,7 @@
           // If your Mirador build expects a URL, you can use:
           // loadedManifest: 'manifest.json'
           // If it accepts inline JSON, keep this:
-          loadedManifest: 'manifest.json',
+          loadedManifest: manifestUrl,
           canvasIndex: 0
         }],
         window: {
