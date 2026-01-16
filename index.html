@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mirador – Manifest-Driven Viewer</title>
+  <title>Ostium</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
   <!-- Optional local CSS (delete if you prefer CDN) -->
@@ -38,67 +38,58 @@
 <body>
   <div id="app"></div>
   <footer>
-    <a href="about.html">About</a>
+    <a href="about.html">About Ostium</a>
     <a href="#" aria-disabled="true">Uni1</a>
     <a href="#" aria-disabled="true">Uni2</a>
   </footer>
   <script src="assets/mirador.min.js"></script>
 
   <script>
-    const manifestUrl = './manifest.json';
-    // Always use fetch; serve the folder with a tiny HTTP server (e.g. python -m http.server 8000)
-    fetch(manifestUrl)
-      .then(r => {
-        if (!r.ok) throw new Error('Manifest not found');
-        return r.json();
-      })
-      .then(manifest => startMirador(manifest))
-      .catch(err => {
-        console.error('Error loading manifest.json:', err);
-        showError('Could not load manifest.json');
-      });
+    const catalog = [
+      {
+        manifestId: 'catalogs/collection-1/manifest.json',
+        label: 'Collection One',
+        provider: 'Local Catalog'
+      },
+      {
+        manifestId: 'catalogs/collection-2/manifest.json',
+        label: 'Collection Two',
+        provider: 'Local Catalog'
+      }
+    ];
 
     // ------------------------------------------------------------
-    // Shared function that actually starts Mirador
+    // Start Mirador with a selectable catalog
     // ------------------------------------------------------------
-    function startMirador(manifest) {
+    function startMirador() {
       Mirador.viewer({
         id: 'app',
-        windows: [{
-          // If your Mirador build expects a URL, you can use:
-          // loadedManifest: 'manifest.json'
-          // If it accepts inline JSON, keep this:
-          loadedManifest: manifestUrl,
-          canvasIndex: 0
-        }],
+        windows: [],
+        catalog,
         window: {
           sideBarOpen: false,
           defaultView: 'single',
           allowFullscreen: true
         },
         workspaceControlPanel: {
-          enabled: false,           // you can keep the panel itself
+          enabled: true,
           controls: {
-            addWindow: false,      // ⬅️ this hides the “+ Add resource” button
-            // other controls you could toggle:
-            // openNew: false,
-            // closeWorkspace: false,
-            // etc.
-          },
+            addWindow: true
+          }
+        },
+        language: 'en',
+        translations: {
+          en: {
+            welcome: 'Welcome to Ostium'
+          }
         },
         theme: {
           palette: { primary: { main: '#1976d2' } }
         }
-        
       });
     }
 
-    function showError(msg) {
-      document.getElementById('app').innerHTML =
-        '<h1 style="color:#fff; text-align:center; margin-top:20vh;">' +
-        msg +
-        '</h1>';
-    }
+    startMirador();
   </script>
 </body>
 </html>
