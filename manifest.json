@@ -2,7 +2,7 @@
   "@context": "http://iiif.io/api/presentation/3/context.json",
   "id": "https://luigi-agosti.github.io/mirador-site/manifest.json",
   "type": "Manifest",
-  "label": { "en": ["My Custom Image Collection"] },
+  "label": { "en": ["Normal sinus"] },
   "items": [
     {
       "id": "canvas-1",

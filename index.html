@@ -10,11 +10,38 @@
 
   <style>
     body, html { margin: 0; height: 100%; overflow: hidden; background: #000; }
-    #app { width: 100vw; height: 100vh; }
+    #app { position: fixed; inset: 0 0 48px 0; }
+    footer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: rgba(255, 255, 255, 0.95);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      font: 12px/1.2 Roboto, sans-serif;
+      z-index: 2;
+    }
+    footer a {
+      color: #1a1a1a;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <div id="app"></div>
+  <footer>
+    <a href="about.html">About</a>
+    <a href="#" aria-disabled="true">Uni1</a>
+    <a href="#" aria-disabled="true">Uni2</a>
+  </footer>
   <script src="assets/mirador.min.js"></script>
 
   <script>
